@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زلتو شاپ | مرجع رسمی و اعتبارسنجی ZoLTo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #080a0f;
+            --card-bg: rgba(18, 22, 32, 0.75);
+            --card-border: rgba(220, 38, 38, 0.25);
+            --accent-red: #dc2626;
+            --accent-red-hover: #ef4444;
+            --accent-blue: #2563eb;
+            --accent-blue-hover: #3b82f6;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --glow-red: rgba(220, 38, 38, 0.35);
+            --glow-blue: rgba(37, 99, 235, 0.25);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Vazirmatn', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Ambient Glow Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--glow-red) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--glow-blue) 0%, transparent 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px 16px;
+        }
+
+        /* Header / Navbar */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
+        .brand-logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .brand-logo span {
+            color: var(--accent-red);
+        }
+
+        .header-btn {
+            background: var(--accent-red);
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--glow-red);
+        }
+
+        .header-btn:hover {
+            background: var(--accent-red-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-logo-box {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #fff;
+            box-shadow: 0 0 25px var(--glow-red);
+            border: 3px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--accent-red);
+            color: #fff;
+            box-shadow: 0 4px 15px var(--glow-red);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-red-hover);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            padding: 16px 10px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-red);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Search Box */
+        .search-box {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-red);
+            box-shadow: 0 0 15px var(--glow-red);
+        }
+
+        .search-count {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Cards Section */
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-right: 4px solid var(--accent-red);
+            padding-right: 10px;
+        }
+
+        .cards-list {
+            display: grid;
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+
+        .id-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 18px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .id-card:hover {
+            border-color: var(--accent-red);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(220, 38, 38, 0.12);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--accent-red);
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .card-handle {
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            direction: ltr;
+            text-align: right;
+            font-weight: 500;
+        }
+
+        .card-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: rgba(37, 99, 235, 0.15);
+            color: var(--accent-blue-hover);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+            margin-top: 4px;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .btn-copy {
+            background: rgba(220, 38, 38, 0.15);
+            color: var(--accent-red-hover);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-copy:hover {
+            background: var(--accent-red);
+            color: #fff;
+        }
+
+        .btn-link {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 8px 14px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Empty State */
+        .empty-box {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px dashed var(--card-border);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 24px;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            margin-top: 20px;
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        footer strong {
+            color: var(--accent-red);
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #181c26;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 12px;
+            border: 1px solid var(--accent-red);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            font-size: 0.9rem;
+            font-weight: 700;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* Floating Actions */
+        .floating-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            background: var(--accent-red);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px var(--glow-red);
+            transition: all 0.3s ease;
+            z-index: 900;
+            font-weight: bold;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .id-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .card-actions {
+                width: 100%;
+                justify-content: flex-end;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="brand-logo">
+                <span>ZoLTo</span> SHOP
+            </div>
+            <a href="https://rubika.ir/Me_ZoLTo" target="_blank" class="header-btn">ارتباط با مدیریت</a>
+        </header>
+
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-logo-box">Z</div>
+            <h1>مرجع اعتبارسنجی و آیدی‌های رسمی ZoLTo</h1>
+            <p>جهت جلوگیری از کلاهبرداری و آیدی‌های جعلی، تمام راه‌های ارتباطی و آیدی‌های رسمی زلتو شاپ در این صفحه تایید شده است.</p>
+            <div class="hero-actions">
+                <a href="https://rubika.ir/Me_ZoLTo" target="_blank" class="btn-action btn-primary">آیدی مدیریت اصلی</a>
+                <button onclick="opShare()" class="btn-action btn-secondary">اشتراک‌گذاری صفحه</button>
+            </div>
+        </section>
+
+        <!-- Stats Grid -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">آیدی رسمی</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label">ادمین تایید شده</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label">گپ فعال</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">معرفی رسمی</div>
+            </div>
+        </section>
+
+        <!-- Search Box -->
+        <div class="search-box">
+            <input type="text" id="opSearch" class="search-input" onkeyup="opSearchIds()" placeholder="جستجو آیدی‌ها (مثلا Me_ZoLTo@)...">
+            <span class="search-count" id="opSearchCount">نمایش 5 آیدی</span>
+        </div>
+
+        <!-- Official IDs Section -->
+        <div class="section-title">آیدی‌های رسمی و تایید شده</div>
+        <div class="cards-list" id="cardsContainer">
+            
+            <!-- Card 1 -->
+            <div class="id-card" data-search="@Me_ZoLTo آیدی اصلی مدیریت زلتو شاپ">
+                <div class="card-info">
+                    <div class="card-icon">👑</div>
+                    <div>
+                        <div class="card-title">آیدی اصلی مدیریت</div>
+                        <div class="card-handle">@Me_ZoLTo</div>
+                        <div class="card-badge">تایید شده رسمی</div>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-copy" onclick="opCopy('@Me_ZoLTo', this)">کپی آیدی</button>
+                    <a href="https://rubika.ir/Me_ZoLTo" target="_blank" class="btn-link">ورود</a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="id-card" data-search="@eTeMaD_ZoLTo بخش اعتماد زلتو شاپ">
+                <div class="card-info">
+                    <div class="card-icon">🛡️</div>
+                    <div>
+                        <div class="card-title">بخش اعتماد</div>
+                        <div class="card-handle">@eTeMaD_ZoLTo</div>
+                        <div class="card-badge">چنل اعتماد</div>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-copy" onclick="opCopy('@eTeMaD_ZoLTo', this)">کپی آیدی</button>
+                    <a href="https://rubika.ir/eTeMaD_ZoLTo" target="_blank" class="btn-link">ورود</a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="id-card" data-search="@TeaM_ZoLTo تیم رسمی زلتو شاپ">
+                <div class="card-info">
+                    <div class="card-icon">⭐</div>
+                    <div>
+                        <div class="card-title">تیم رسمی</div>
+                        <div class="card-handle">@TeaM_ZoLTo</div>
+                        <div class="card-badge">کانال اصلی تیم</div>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-copy" onclick="opCopy('@TeaM_ZoLTo', this)">کپی آیدی</button>
+                    <a href="https://rubika.ir/TeaM_ZoLTo" target="_blank" class="btn-link">ورود</a>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="id-card" data-search="@TeaM_ZoLTo تیم شاپ زلتو">
+                <div class="card-info">
+                    <div class="card-icon">🛒</div>
+                    <div>
+                        <div class="card-title">تیم شاپ</div>
+                        <div class="card-handle">@TeaM_ZoLTo</div>
+                        <div class="card-badge">فروشگاه تیم</div>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-copy" onclick="opCopy('@TeaM_ZoLTo', this)">کپی آیدی</button>
+                    <a href="https://rubika.ir/TeaM_ZoLTo" target="_blank" class="btn-link">ورود</a>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="id-card" data-search="@sToRe_ZoLTo چنل آگهی رسمی زلتو شاپ">
+                <div class="card-info">
+                    <div class="card-icon">📢</div>
+                    <div>
+                        <div class="card-title">چنل آگهی رسمی</div>
+                        <div class="card-handle">@sToRe_ZoLTo</div>
+                        <div class="card-badge">استور آگهی</div>
+                    </div>
+                </div>
+                <div class="card-actions">
+                    <button class="btn-copy" onclick="opCopy('@sToRe_ZoLTo', this)">کپی آیدی</button>
+                    <a href="https://rubika.ir/sToRe_ZoLTo" target="_blank" class="btn-link">ورود</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Admins Section -->
+        <div class="section-title">ادمین‌های تایید شده</div>
+        <div class="empty-box">
+            فعلا ادمین تایید شده‌ای ثبت نشده است. (فعلا نداریم)
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>تمامی حقوق این صفحه متعلق به <strong>ZoLTo (زلتو شاپ)</strong> می‌باشد.</p>
+            <p style="margin-top: 6px; font-size: 0.75rem; color: var(--text-muted);">آخرین بروزرسانی: <span id="currentDate"></span></p>
+        </footer>
+    </div>
+
+    <!-- Scroll Top Floating Button -->
+    <button class="floating-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toastMsg">پیام نمونه</div>
+
+    <script>
+        // Set Current Persian Date
+        document.getElementById('currentDate').innerText = new Date().toLocaleDateString('fa-IR');
+
+        // Copy Functionality
+        function opCopy(text, btnElement) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).then(() => {
+                    opShowCopyFeedback(btnElement);
+                }).catch(() => {
+                    opFallbackCopy(text, btnElement);
+                });
+            } else {
+                opFallbackCopy(text, btnElement);
+            }
+        }
+
+        function opFallbackCopy(text, btnElement) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            textArea.style.position = "fixed";
+            textArea.style.left = "-999999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                opShowCopyFeedback(btnElement);
+            } catch (err) {
+                opToast('خطا در کپی آیدی');
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function opShowCopyFeedback(btnElement) {
+            const originalText = btnElement.innerText;
+            btnElement.innerText = '✓ کپی شد';
+            btnElement.style.background = '#2563eb';
+            btnElement.style.color = '#fff';
+            opToast('آیدی با موفقیت کپی شد');
+            setTimeout(() => {
+                btnElement.innerText = originalText;
+                btnElement.style.background = '';
+                btnElement.style.color = '';
+            }, 1600);
+        }
+
+        // Live Search Functionality
+        function opSearchIds() {
+            const input = document.getElementById('opSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('#cardsContainer .id-card');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const searchData = card.getAttribute('data-search').toLowerCase();
+                if (searchData.includes(input)) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            document.getElementById('opSearchCount').innerText = `نمایش ${visibleCount} آیدی`;
+        }
+
+        // Native Share API
+        function opShare() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'زلتو شاپ | ZoLTo SHOP',
+                    text: 'مرجع رسمی اعتبارسنجی و آیدی‌های رسمی زلتو شاپ',
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                opCopy(window.location.href);
+                opToast('لینک سایت کپی شد');
+            }
+        }
+
+        // Toast Helper
+        function opToast(msg) {
+            const toast = document.getElementById('toastMsg');
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2200);
+        }
+    </script>
+</body>
+</html>
